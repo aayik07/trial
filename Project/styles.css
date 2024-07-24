@@ -1,0 +1,23 @@
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+#info {
+    margin-top: 10px;
+}
+
+.distance-label {
+    background-color: white;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.leaflet-div-icon.leaflet-editing-icon {
+    background-color: blue;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}

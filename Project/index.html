@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map with Location, Satellite Toggle, and Polygon Area</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="locate-button">Locate Me</button>
+    <button id="toggle-satellite">Toggle Satellite View</button>
+    <button id="finish-polygon">Finish Polygon</button>
+    <div id="map"></div>
+    <textarea id="info" rows="3" cols="50" readonly></textarea>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    <script src="https://unpkg.com/turf/turf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
