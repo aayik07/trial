@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polygon Drawing and Area Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Turf.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+</head>
+<body>
+    <h1>Polygon Drawing and Area Calculation App</h1>
+
+    <!-- Section 1: Recording and Area Calculation -->
+    <button id="recordLocation">Record Point</button>
+    <button id="calculateArea">Calculate Area</button>
+    <textarea id="jsonOutput" readonly></textarea>
+    <div id="areaOutput"></div>
+
+    <!-- Section 2: Canvas Drawing -->
+    <canvas id="drawingCanvas" width="800" height="500"></canvas><br>
+    <button id="finishPolygon">Finish Polygon</button>
+    <script src="script.js"></script>
+</body>
+</html>
