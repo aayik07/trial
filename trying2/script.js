@@ -3,6 +3,10 @@ let canvas = document.getElementById('drawingCanvas');
 let context = canvas.getContext('2d');
 let lastPoint = null;
 
+// Adjust the canvas size based on the device screen size
+canvas.width = window.innerWidth * 0.9;
+canvas.height = window.innerHeight * 0.6;
+
 // Record the user's current location
 document.getElementById('recordLocation').addEventListener('click', () => {
     if (navigator.geolocation) {
@@ -25,6 +29,12 @@ document.getElementById('recordLocation').addEventListener('click', () => {
             // Update canvas view and adjust zoom
             updateCanvasView();
             fitToPolygon();
+        }, () => {
+            alert('Geolocation failed or is not supported by your browser.');
+        }, {
+            enableHighAccuracy: true, // Request high-accuracy GPS
+            timeout: 10000, // Set a timeout (10 seconds)
+            maximumAge: 0 // Prevent using old cached data
         });
     } else {
         alert('Geolocation is not supported by this browser.');
