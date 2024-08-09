@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Measuring App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Land Measuring Application</h1>
+    
+    <button id="recordLocation">Record Location</button>
+    <button id="calculateArea">Calculate Area</button>
+    <button id="finishPolygon">Finish Polygon</button>
+    
+    <h2>Recorded Locations (JSON):</h2>
+    <textarea id="jsonOutput" readonly></textarea>
+
+    <h2>Area:</h2>
+    <p id="areaOutput">Area: </p>
+    
+    <h2>Land Plot Diagram:</h2>
+    <canvas id="drawingCanvas"></canvas>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
