@@ -1,6 +1,20 @@
 let points = [];
 
-// Function to draw the polygon on the canvas
+// Function to convert latitude and longitude to canvas coordinates
+function convertCoords(longitude, latitude, scale, offsetX, offsetY) {
+    // Convert coordinates to canvas space
+    return [
+        (longitude - minX) * scale + offsetX,
+        (maxY - latitude) * scale + offsetY
+    ];
+}
+
+// Function to calculate the distance between two points
+function calculateDistance(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / scale;
+}
+
+// Function to draw the polygon and distances
 function drawPolygon() {
     const canvas = document.getElementById('drawingCanvas');
     const ctx = canvas.getContext('2d');
@@ -38,19 +52,17 @@ function drawPolygon() {
     ctx.lineWidth = 2;
     
     ctx.beginPath();
-    ctx.moveTo((points[0][0] * scale) + offsetX, (points[0][1] * scale) + offsetY);
+    const [startX, startY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
+    ctx.moveTo(startX, startY);
     
-    // Draw the polygon and distances
     points.forEach(([longitude, latitude], index) => {
-        const x = (longitude * scale) + offsetX;
-        const y = (latitude * scale) + offsetY;
+        const [x, y] = convertCoords(longitude, latitude, scale, offsetX, offsetY);
         ctx.lineTo(x, y);
 
         // Draw distances
         if (index > 0) {
-            const prevX = (points[index - 1][0] * scale) + offsetX;
-            const prevY = (points[index - 1][1] * scale) + offsetY;
-            const distance = Math.sqrt(Math.pow(x - prevX, 2) + Math.pow(y - prevY, 2)).toFixed(2);
+            const [prevX, prevY] = convertCoords(points[index - 1][0], points[index - 1][1], scale, offsetX, offsetY);
+            const distance = calculateDistance(prevX, prevY, x, y).toFixed(2);
             
             // Draw distance label
             ctx.fillStyle = '#e880f1';
@@ -59,21 +71,16 @@ function drawPolygon() {
         }
     });
     
+    // Close the polygon and draw the last segment
+    const [lastX, lastY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
+    ctx.lineTo(lastX, lastY);
+    const lastDistance = calculateDistance(startX, startY, lastX, lastY).toFixed(2);
+    ctx.fillText(`${lastDistance} m`, (lastX + startX) / 2, (lastY + startY) / 2 - 5);
+
     ctx.closePath();
     ctx.stroke();
     ctx.fill();
-
-    // Draw distance between last and first point
-    const firstX = (points[0][0] * scale) + offsetX;
-    const firstY = (points[0][1] * scale) + offsetY;
-    const lastX = (points[points.length - 1][0] * scale) + offsetX;
-    const lastY = (points[points.length - 1][1] * scale) + offsetY;
-    const lastDistance = Math.sqrt(Math.pow(lastX - firstX, 2) + Math.pow(lastY - firstY, 2)).toFixed(2);
-    
-    // Draw distance label for the last segment
-    ctx.fillText(`${lastDistance} m`, (lastX + firstX) / 2, (lastY + firstY) / 2 - 5);
 }
-
 
 // Event listener for recording location
 document.getElementById('recordLocation').addEventListener('click', () => {
