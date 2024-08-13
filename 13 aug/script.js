@@ -1,8 +1,8 @@
 let points = [];
+let minX, maxX, minY, maxY;
 
 // Function to convert latitude and longitude to canvas coordinates
 function convertCoords(longitude, latitude, scale, offsetX, offsetY) {
-    // Convert geographical coordinates to canvas space
     return [
         (longitude - minX) * scale + offsetX,
         (maxY - latitude) * scale + offsetY
@@ -18,14 +18,14 @@ function calculateDistance(x1, y1, x2, y2) {
 function drawPolygon() {
     const canvas = document.getElementById('drawingCanvas');
     const ctx = canvas.getContext('2d');
-    
+
     if (points.length < 2) return; // Need at least 2 points to draw lines
 
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
 
     // Calculate bounds of the polygon
-    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     points.forEach(([longitude, latitude]) => {
         if (longitude < minX) minX = longitude;
         if (longitude > maxX) maxX = longitude;
@@ -46,15 +46,15 @@ function drawPolygon() {
 
     // Clear previous drawings
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    
+
     ctx.strokeStyle = '#e880f1';
     ctx.fillStyle = 'rgba(232, 128, 241, 0.3)';
     ctx.lineWidth = 2;
-    
+
     ctx.beginPath();
     const [startX, startY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
     ctx.moveTo(startX, startY);
-    
+
     points.forEach(([longitude, latitude], index) => {
         const [x, y] = convertCoords(longitude, latitude, scale, offsetX, offsetY);
         ctx.lineTo(x, y);
@@ -63,14 +63,14 @@ function drawPolygon() {
         if (index > 0) {
             const [prevX, prevY] = convertCoords(points[index - 1][0], points[index - 1][1], scale, offsetX, offsetY);
             const distance = calculateDistance(prevX, prevY, x, y).toFixed(2);
-            
+
             // Draw distance label
             ctx.fillStyle = '#e880f1';
             ctx.font = '14px Arial';
             ctx.fillText(`${distance} px`, (prevX + x) / 2, (prevY + y) / 2 - 5);
         }
     });
-    
+
     // Close the polygon and draw the last segment
     const [lastX, lastY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
     ctx.lineTo(lastX, lastY);
