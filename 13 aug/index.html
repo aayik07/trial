@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Recorder</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Turf.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+</head>
+<body>
+    <h1>Easy Measure</h1>
+    <button id="recordLocation">Record Location</button>
+    <button id="calculateArea">Calculate Area</button>
+    <button id="clearLocations">Clear Locations</button>
+    <textarea id="jsonOutput" readonly></textarea>
+    <div id="areaOutput"></div>
+    <canvas id="drawingCanvas" width="600" height="400" style="border:1px solid #e880f1; margin-top: 20px;"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>
