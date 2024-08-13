@@ -2,16 +2,16 @@ let points = [];
 
 // Function to convert latitude and longitude to canvas coordinates
 function convertCoords(longitude, latitude, scale, offsetX, offsetY) {
-    // Convert coordinates to canvas space
+    // Convert geographical coordinates to canvas space
     return [
         (longitude - minX) * scale + offsetX,
         (maxY - latitude) * scale + offsetY
     ];
 }
 
-// Function to calculate the distance between two points
+// Function to calculate the distance between two points in canvas pixels
 function calculateDistance(x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) / scale;
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
 // Function to draw the polygon and distances
@@ -67,7 +67,7 @@ function drawPolygon() {
             // Draw distance label
             ctx.fillStyle = '#e880f1';
             ctx.font = '14px Arial';
-            ctx.fillText(`${distance} m`, (prevX + x) / 2, (prevY + y) / 2 - 5);
+            ctx.fillText(`${distance} px`, (prevX + x) / 2, (prevY + y) / 2 - 5);
         }
     });
     
@@ -75,7 +75,7 @@ function drawPolygon() {
     const [lastX, lastY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
     ctx.lineTo(lastX, lastY);
     const lastDistance = calculateDistance(startX, startY, lastX, lastY).toFixed(2);
-    ctx.fillText(`${lastDistance} m`, (lastX + startX) / 2, (lastY + startY) / 2 - 5);
+    ctx.fillText(`${lastDistance} px`, (lastX + startX) / 2, (lastY + startY) / 2 - 5);
 
     ctx.closePath();
     ctx.stroke();
