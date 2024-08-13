@@ -1,0 +1,33 @@
+body {
+    background-color: #161026;
+    color: #e880f1;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #533a94;
+    color: white;
+    font-size: 16px;
+}
+
+textarea {
+    width: 80%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+#areaOutput {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#drawingSvg {
+    border: 1px solid #e880f1;
+    margin-top: 20px;
+}
