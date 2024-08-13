@@ -21,7 +21,7 @@ function drawPolygon() {
     if (points.length < 2) return; // Need at least 2 points to draw lines
 
     // Calculate bounds of the polygon
-    minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    minX = Infinity; maxX = -Infinity; minY = Infinity; maxY = -Infinity;
     points.forEach(([longitude, latitude]) => {
         if (longitude < minX) minX = longitude;
         if (longitude > maxX) maxX = longitude;
@@ -63,21 +63,27 @@ function drawPolygon() {
             const [prevX, prevY] = convertCoords(points[index - 1][0], points[index - 1][1], scale, offsetX, offsetY);
             const [x, y] = convertCoords(longitude, latitude, scale, offsetX, offsetY);
             const distance = calculateDistance(prevX, prevY, x, y).toFixed(2);
-            
-            drawSvg.text(`${distance} px`)
-                .move((prevX + x) / 2, (prevY + y) / 2 - 10)
-                .fill('#e880f1');
+
+            if (!isNaN(distance)) {
+                drawSvg.text(`${distance} px`)
+                    .move((prevX + x) / 2, (prevY + y) / 2 - 10)
+                    .fill('#e880f1');
+            }
         }
     });
 
     // Draw distance for the last segment
-    const [lastX, lastY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
-    const [startX, startY] = convertCoords(points[points.length - 1][0], points[points.length - 1][1], scale, offsetX, offsetY);
-    const lastDistance = calculateDistance(startX, startY, lastX, lastY).toFixed(2);
+    if (points.length > 1) {
+        const [lastX, lastY] = convertCoords(points[0][0], points[0][1], scale, offsetX, offsetY);
+        const [startX, startY] = convertCoords(points[points.length - 1][0], points[points.length - 1][1], scale, offsetX, offsetY);
+        const lastDistance = calculateDistance(startX, startY, lastX, lastY).toFixed(2);
 
-    drawSvg.text(`${lastDistance} px`)
-        .move((lastX + startX) / 2, (lastY + startY) / 2 - 10)
-        .fill('#e880f1');
+        if (!isNaN(lastDistance)) {
+            drawSvg.text(`${lastDistance} px`)
+                .move((lastX + startX) / 2, (lastY + startY) / 2 - 10)
+                .fill('#e880f1');
+        }
+    }
 }
 
 // Event listener for recording location
