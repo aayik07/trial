@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Recorder</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Turf.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+          <div class="nav-logo">
+            <img
+              id="photo-logo"
+              src="Screenshot 2024-08-02 114729.png"
+              alt="nav-logo"
+            />
+          </div>
+          <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Buy</a>
+            <a href="#">Sell</a>
+            <a href="#">Map</a>
+            <a href="#">Globe</a>
+            <a href="#">Measurement</a>
+            <a href="#">Converter</a>
+          </div>
+          <button id="get-started" class="get-started-btn">Get Started</button>
+        </div>
+      </header>
+    <h1>Easy Measure</h1>
+    <button id="recordLocation">Record Location</button>
+    <button id="calculateArea">Calculate Area</button>
+    <textarea id="jsonOutput" readonly></textarea>
+    <div id="areaOutput">Area:</div>
+    <script src="script.js"></script>
+</body>
+</html>
