@@ -270,6 +270,7 @@ footer {
     }
 
     .get-started-btn {
+        display: none;
         padding: 6px 15px;
         font-size: 14px;
         margin-right: 0;
@@ -353,6 +354,7 @@ footer {
 
 @media (max-width: 410px) {
     .get-started-btn {
+        display: none;
         padding: 3px 10px;
         font-size: 12px;
         margin-right: 8px;
