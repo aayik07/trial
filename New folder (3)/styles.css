@@ -29,6 +29,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    padding-left: 15px; /* Space for logo shift */
+    padding-right: 70px; /* Space for Get Started button */
     position: fixed;
     top: 0;
     left: 0;
@@ -43,14 +45,14 @@ body {
 #photo-logo {
     width: 212px;
     height: auto;
-    margin-left: 40px;
+    margin-left: 0; /* Adjusted margin */
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
     align-items: center;
-    margin-right: 180px;
+    margin-right: 0; /* Adjusted margin */
 }
 
 .nav-links a {
@@ -250,11 +252,12 @@ footer {
         justify-content: space-between;
         height: 60px;
         padding: 0 15px;
+        padding-left: 10px; /* Reduced padding for logo shift */
+        padding-right: 15px; /* Adjusted padding for button space */
     }
 
     .nav-logo img {
         width: 150px;
-        margin-left: 0;
     }
 
     .nav-links {
@@ -299,6 +302,11 @@ footer {
         border-bottom: 1px solid #553d94;
     }
 
+    /* Hide World Map */
+    .overlay-map {
+        display: none; /* Hide map in responsive view */
+    }
+
     /* Adjust Overlay Layout for Mobile */
     .overlay {
         flex-direction: column;
@@ -319,5 +327,20 @@ footer {
         max-width: 90%;
         height: auto;
         margin-left: 0;
+    }
+
+    .start {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Increase spacing between buttons */
+        flex-direction: column;
+    }
+
+    .para-button {
+        width: 100%; /* Full width buttons for mobile */
+    }
+
+    #area-converter {
+        margin-left: -1px;
     }
 }
