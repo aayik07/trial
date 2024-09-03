@@ -350,3 +350,12 @@ footer {
         margin-left: -1px;
     }
 }
+
+@media (max-width: 380px) {
+    .get-started-btn {
+        padding: 3px 10px;
+        font-size: 12px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
