@@ -45,14 +45,14 @@ body {
 #photo-logo {
     width: 212px;
     height: auto;
-    margin-left: 0; /* Adjusted margin */
+    margin-left: 40px; /* Adjusted margin */
 }
 
 /* Navbar Links */
 .nav-links {
     display: flex;
     align-items: center;
-    margin-right: 0; /* Adjusted margin */
+    /* margin-right: 120px;  */
 }
 
 .nav-links a {
@@ -86,7 +86,8 @@ body {
     font-size: 13px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-right: 40px;
+    /* margin-right: 40px; */
+    margin-left: 120px;
 }
 
 .get-started-btn:hover {
@@ -250,7 +251,7 @@ footer {
 @media (max-width: 768px) {
     .navbar {
         justify-content: space-between;
-        height: 60px;
+        height: 70px;
         padding: 0 15px;
         padding-left: 10px; /* Reduced padding for logo shift */
         padding-right: 15px; /* Adjusted padding for button space */
@@ -264,10 +265,15 @@ footer {
         display: none; /* Hide the links in responsive view */
     }
 
+    #photo-logo {
+        margin-left: 0;
+    }
+
     .get-started-btn {
         padding: 6px 15px;
         font-size: 14px;
         margin-right: 0;
+        margin-left: 0;
     }
 
     /* Menu Icon */
