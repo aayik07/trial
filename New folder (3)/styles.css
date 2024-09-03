@@ -1,0 +1,299 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Body Styles */
+body {
+    background-color: #161026;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #2d1f49;
+    width: 100%;
+    height: 76px;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Navbar Logo */
+.nav-logo {
+    display: flex;
+}
+
+#photo-logo {
+    width: 212px;
+    height: auto;
+    margin-left: 40px;
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 180px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.nav-links a + a {
+    margin-left: 7px;
+}
+
+.nav-links a:hover {
+    color: #e880f1;
+    transition: 0.3s ease-in-out;
+}
+
+/* Get Started Button */
+.get-started-btn {
+    background-color: #553d94;
+    color: white;
+    width: 116.93px;
+    height: 34px;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 40px;
+}
+
+.get-started-btn:hover {
+    background-color: #6a5897;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 56px; /* Space for navbar */
+    padding: 20px;
+    flex: 1;
+}
+
+/* Overlay and Sections */
+.overlay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 40px;
+    height: auto;
+}
+
+/* World Map in Overlay */
+.overlay-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Ensure map is behind text and image */
+    opacity: 0.5; /* Optional: make map semi-transparent */
+}
+
+/* Overlay Content */
+.text-section {
+    position: relative;
+    z-index: 2; /* Ensure text is above map */
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+    color: white;
+}
+
+.image-section {
+    position: relative;
+    z-index: 2; /* Ensure image is above map */
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Align image to the right */
+    align-items: center;
+    margin-right: 50px;
+}
+
+.image-section img {
+    max-width: 80%; /* Increase size of the image */
+    height: auto;
+    max-height: 500px; /* Adjust height to ensure it fits well */
+    margin-left: 20px; /* Add margin to push image closer to the right side */
+}
+
+/* Heading and Button Styles */
+.app-heading {
+    font-size: 70px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #e880f1;
+}
+
+.app-para {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.start {
+    margin-top: 50px;
+}
+
+.para-button {
+    background-color: #533a94;
+    color: white;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#area-converter {
+    margin-left: 25px;
+}
+
+.para-button:hover {
+    background-color: #6a5897;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2d1f49;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #bdb8cc;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9em;
+}
+
+.footer-section a:hover {
+    color: #e880f1;
+    transition: 0.3s ease-in-out;
+}
+
+.footer-section .social a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.8em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .nav-links {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    #photo-logo {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .get-started-btn {
+        margin-top: 10px;
+    }
+
+    .overlay {
+        flex-direction: column;
+        padding-top: 80px; /* Adjust padding to ensure visibility */
+    }
+
+    .text-section {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .app-heading {
+        font-size: 50px;
+    }
+
+    .start {
+        margin-top: 30px;
+    }
+
+    .image-section img {
+        max-width: 100%;
+        margin-top: 20px;
+        max-height: 300px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin: 20px 0;
+    }
+}
