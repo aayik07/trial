@@ -3,26 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land Measuring App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Location Recorder</title>
+    <link rel="stylesheet" href="start-css/styles.css">
+    <!-- Include Turf.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
 </head>
 <body>
-    <h1>Land Measuring Application</h1>
-    
+  <header>
+    <div class="navbar">
+        <div class="nav-logo">
+            <a href="../home.html"><img id="photo-logo" src="images/logo.png" alt="nav-logo" /></a>
+            </div>
+            <div class="nav-links">
+                <a href="../home.html">Home</a>
+                <a href="../home.html">Buy</a>
+                <a href="../home.html">Sell</a>
+                <a href="../home.html">Map</a>
+                <a href="../home.html">Globe</a>
+                <a href="../home.html">Measurement</a>
+                <a href="../home.html">Converter</a>
+            </div>
+        <button id="get-started" class="get-started-btn">Get Started</button>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</header>
+    <h1>Easy Measure</h1>
     <button id="recordLocation">Record Location</button>
     <button id="calculateArea">Calculate Area</button>
-    <button id="finishPolygon">Finish Polygon</button>
-    
-    <h2>Recorded Locations (JSON):</h2>
     <textarea id="jsonOutput" readonly></textarea>
+    <div id="areaOutput">Area:</div>
 
-    <h2>Area:</h2>
-    <p id="areaOutput">Area: </p>
-    
-    <h2>Land Plot Diagram:</h2>
-    <canvas id="drawingCanvas"></canvas>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
-    <script src="script.js"></script>
+    <footer>
+      <div class="footer-container">
+          <div class="footer-section contact">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@easymeasure.com">info@easymeasure.com</a></p>
+              <p>Phone: <a href="tel:+1234567890">+1234567890</a></p>
+              <p>Address: 123 Easy Measure St, Tech City, World</p>
+          </div>
+          <div class="footer-section social">
+              <h3>Follow Us</h3>
+              <a href="https://github.com/rahiltariq07" target="_main">GitHub</a><br>
+              <a href="https://x.com/rahiltariq07" target="_main">Twitter</a><br>
+              <a href="https://www.linkedin.com/in/rahiltariq07/" target="_main">LinkedIn</a><br>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 Easy Measure. All rights reserved.</p>
+      </div>
+  </footer>
+    <script src="start-js/script.js"></script>
 </body>
 </html>
