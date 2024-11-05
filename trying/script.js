@@ -1,26 +1,18 @@
 let points = [];
-let canvas = document.getElementById('drawingCanvas');
-let context = canvas.getContext('2d');
-let lastPoint = null;
 
 document.getElementById('recordLocation').addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
+            console.log(`Recorded point: ${latitude}, ${longitude}`);
             points.push([longitude, latitude]);
             document.getElementById('jsonOutput').value = JSON.stringify(points, null, 2);
-
-            // Draw point on canvas
-            let point = toCanvasCoords(longitude, latitude);
-            drawPoint(point);
-
-            if (lastPoint) {
-                drawLine(lastPoint, point);
-                let distance = turf.distance(turf.point(lastPoint), turf.point(point), { units: 'meters' });
-                drawDistanceLabel(lastPoint, point, distance.toFixed(2));
-            }
-            lastPoint = point;
-        });
+        }, 
+        error => {
+            console.error("Geolocation error:", error);
+            alert("Could not retrieve accurate location. Please try again.");
+        }, 
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
     } else {
         alert('Geolocation is not supported by this browser.');
     }
@@ -32,53 +24,21 @@ document.getElementById('calculateArea').addEventListener('click', () => {
         return;
     }
 
-    const polygon = turf.polygon([points]);
-    const area = turf.area(polygon);
-    document.getElementById('areaOutput').innerText = `Area: ${area.toFixed(2)} square meters`;
-});
-
-document.getElementById('finishPolygon').addEventListener('click', () => {
-    if (points.length < 3) {
-        alert('Need at least 3 points to form a polygon.');
-        return;
+    // Ensure the polygon is closed by re-adding the first point if necessary
+    const firstPoint = points[0];
+    const lastPoint = points[points.length - 1];
+    if (firstPoint[0] !== lastPoint[0] || firstPoint[1] !== lastPoint[1]) {
+        points.push(firstPoint);
     }
 
-    // Close the polygon by drawing the final line
-    let firstPoint = toCanvasCoords(points[0][0], points[0][1]);
-    drawLine(lastPoint, firstPoint);
-
+    // Calculate geodesic area using Turf.js
     const polygon = turf.polygon([points]);
     const area = turf.area(polygon);
-    document.getElementById('areaOutput').innerText = `Area: ${area.toFixed(2)} square meters`;
 
-    lastPoint = null; // Reset lastPoint to stop drawing new lines
+    // Display the area in square meters
+    document.getElementById('areaOutput').innerText = `Area: ${area.toFixed(2)} square meters`;
 });
 
-function toCanvasCoords(lng, lat) {
-    return [
-        (lng + 180) * (canvas.width / 360),
-        (90 - lat) * (canvas.height / 180)
-    ];
-}
-
-function drawPoint(point) {
-    context.beginPath();
-    context.arc(point[0], point[1], 5, 0, 2 * Math.PI);
-    context.fillStyle = '#FF0000';
-    context.fill();
-}
-
-function drawLine(start, end) {
-    context.beginPath();
-    context.moveTo(start[0], start[1]);
-    context.lineTo(end[0], end[1]);
-    context.strokeStyle = '#0000FF';
-    context.stroke();
-}
-
-function drawDistanceLabel(start, end, distance) {
-    let midPoint = [(start[0] + end[0]) / 2, (start[1] + end[1]) / 2];
-    context.fillStyle = '#000000';
-    context.font = '12px Arial';
-    context.fillText(`${distance} m`, midPoint[0], midPoint[1]);
+function toggleMenu() {
+    document.querySelector('.navbar').classList.toggle('active');
 }
