@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+    background-color: #2b1033;
+    color: #e6d2ff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #e6d2ff;
+}
+
+.header p {
+    font-size: 16px;
+    color: #b09bcc;
+}
+
+/* Square Container for Edge Divs and Area Output */
+.container {
+    width: 320px;
+    height: 320px;
+    overflow-y: auto;
+    border: 2px solid #7c47a1;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Grid for Edge Display */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    grid-gap: 15px;
+}
+
+/* Edge Div */
+.grid-item {
+    background-color: #7c47a1;
+    color: #e6d2ff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Add More Button Styled as Grid Item with Lighter Tone */
+.add-more-button {
+    background-color: #a080b3;
+    color: #e6d2ff;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.add-more-button:hover {
+    background-color: #8f6da6;
+}
+
+/* Calculate Button */
+.calculate-button {
+    background-color: #7c47a1;
+    color: #e6d2ff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.calculate-button:hover {
+    background-color: #6a3b8f;
+}
+
+/* Area Output Display */
+.area-output {
+    background-color: #7c47a1;
+    color: #e6d2ff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
