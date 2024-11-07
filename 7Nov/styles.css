@@ -1,0 +1,172 @@
+/* General styling */
+body {
+    background-color: #2b1033;
+    color: #e6d2ff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #e6d2ff;
+}
+
+.header p {
+    font-size: 16px;
+    color: #b09bcc;
+}
+
+/* Container Styling */
+.container {
+    width: 280px;
+    height: 320px;
+    display: grid;
+    grid-template-columns: repeat(2, 130px); /* 2 columns with 130px width */
+    gap: 20px; /* Padding between edge divs */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 2px solid #7c47a1;
+    background-color: #1a0221;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Edge Divs (Now 130px x 130px) */
+.grid-item {
+    width: 130px;
+    height: 130px;
+    background-color: #7c47a1;
+    color: #e6d2ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+/* Add More Button (with a lighter color tone) */
+#addMore {
+    width: 130px;
+    height: 130px;
+    background-color: #8b5b9d;
+    color: #e6d2ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+#addMore .text {
+    display: block;
+}
+
+#addMore .icon {
+    font-size: 24px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Loader Styling */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #e6c4ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none;
+}
+
+/* Animation to make the loader spin */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Styling for the 'Calculate Area' button */
+.calculate-button {
+    background-color: #e6c4ff;
+    color: #2b1033;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+/* Area display in center */
+.area-display {
+    width: 130px;
+    height: 130px;
+    background-color: #9308f7;
+    color: #e6d2ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.area-display b {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.area-display span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Scrollbar styling */
+.container::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #7c47a1;
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: #e6c4ff;
+}
