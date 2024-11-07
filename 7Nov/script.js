@@ -29,7 +29,7 @@ function addAddMoreButton() {
 
                 const edgeDiv = document.createElement('div');
                 edgeDiv.className = 'grid-item';
-                edgeDiv.innerHTML = `Edge ${points.length}<br><span class="latlong">${latitude.toFixed(6)}<br>${longitude.toFixed(6)}</span>`;
+                edgeDiv.innerHTML = `Edge ${points.length}<br><span class="latlong">${latitude.toFixed(7)}<br>${longitude.toFixed(7)}</span>`;
                 gridContainer.insertBefore(edgeDiv, addMoreButton);
 
                 updateAddMorePosition();
